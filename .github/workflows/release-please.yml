@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: release-please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get token
+        id: create_token
+        uses: getsentry/action-github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: simple
+          package-name: backstage
+          extra-files: |
+            README.md
+          token: ${{ steps.create_token.outputs.token }}
