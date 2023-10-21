@@ -10,3 +10,11 @@ To start the app, run:
 yarn install
 yarn dev
 ```
+
+# Pre-configured Features
+
+- Event Processor
+- GitHub Auth
+- GitHub Integration
+  - Includes GitHub Discovery
+  - Includes GitHub Events backend

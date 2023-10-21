@@ -31,6 +31,7 @@ import search from './plugins/search';
 import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
+import {DefaultEventBroker} from "@backstage/plugin-events-backend";
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -38,8 +39,9 @@ function makeCreateEnv(config: Config) {
   const discovery = HostDiscovery.fromConfig(config);
   const cacheManager = CacheManager.fromConfig(config);
   const databaseManager = DatabaseManager.fromConfig(config, { logger: root });
-  const tokenManager = ServerTokenManager.noop();
+  const tokenManager = process.env.BACKSTAGE_BACKEND_AUTH ? ServerTokenManager.fromConfig(config, { logger: root }) :ServerTokenManager.noop()
   const taskScheduler = TaskScheduler.fromConfig(config, { databaseManager });
+  const eventBroker = new DefaultEventBroker(root.child({ type: 'plugin' }));
 
   const identity = DefaultIdentityClient.create({
     discovery,
@@ -67,6 +69,7 @@ function makeCreateEnv(config: Config) {
       scheduler,
       permissions,
       identity,
+      eventBroker,
     };
   };
 }
