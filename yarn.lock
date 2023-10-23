@@ -2485,6 +2485,64 @@
     lodash "^4.17.21"
     luxon "^3.0.0"
 
+"@backstage/plugin-adr-backend@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-adr-backend/-/plugin-adr-backend-0.4.3.tgz#c9a2d1dc992b48d12e627df5f5f8d73b89b9bd3a"
+  integrity sha512-P0N3fQejReYh3BUyz9hCmplOiFDDssZQE9E2OoMoVyiNUUJfy39MhgzhY49s/KaTJ/4KMz0poPrgwvYEQglZgA==
+  dependencies:
+    "@backstage/backend-common" "^0.19.8"
+    "@backstage/backend-plugin-api" "^0.6.6"
+    "@backstage/catalog-client" "^1.4.5"
+    "@backstage/catalog-model" "^1.4.3"
+    "@backstage/config" "^1.1.1"
+    "@backstage/errors" "^1.2.3"
+    "@backstage/integration" "^1.7.1"
+    "@backstage/plugin-adr-common" "^0.2.16"
+    "@backstage/plugin-search-common" "^1.2.7"
+    "@types/express" "^4.17.6"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    luxon "^3.0.0"
+    marked "^4.0.14"
+    node-fetch "^2.6.5"
+    winston "^3.2.1"
+    yn "^4.0.0"
+
+"@backstage/plugin-adr-common@^0.2.16":
+  version "0.2.16"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-adr-common/-/plugin-adr-common-0.2.16.tgz#edf2c66a42bf843f2e442c7f8fa63e13e9f9738c"
+  integrity sha512-3Lml2XTraWniFGP5lkGYyTkf4ayxqLPsosTbS/5dlnUYfZWlU8Vcf8ARH3V0/G/W/mzBofPqxt8ANCCl2ivq9g==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.3"
+    "@backstage/integration" "^1.7.1"
+    "@backstage/plugin-search-common" "^1.2.7"
+    front-matter "^4.0.2"
+    luxon "^3.0.0"
+
+"@backstage/plugin-adr@^0.6.8":
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-adr/-/plugin-adr-0.6.8.tgz#7341ec4a69035209e36df96df3d5a7c0d4390954"
+  integrity sha512-fkSqFwYfdAShmwIYe7Nm8a56Ik5S0gWgI/yRhOjFxoDqOTyRrbEGzvWij30+4JFbS1CZ9JC+u4e9DPMPCk2SUw==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.3"
+    "@backstage/core-components" "^0.13.6"
+    "@backstage/core-plugin-api" "^1.7.0"
+    "@backstage/frontend-plugin-api" "^0.2.0"
+    "@backstage/integration-react" "^1.1.20"
+    "@backstage/plugin-adr-common" "^0.2.16"
+    "@backstage/plugin-catalog-react" "^1.8.5"
+    "@backstage/plugin-search-common" "^1.2.7"
+    "@backstage/plugin-search-react" "^1.7.1"
+    "@backstage/theme" "^0.4.3"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    lodash "^4.17.21"
+    react-markdown "^8.0.0"
+    react-use "^17.2.4"
+    remark-gfm "^3.0.1"
+
 "@backstage/plugin-api-docs@^0.9.12":
   version "0.9.12"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-api-docs/-/plugin-api-docs-0.9.12.tgz#76166304bfd96c1ad54fb552bbdb62cfc6fd0b88"
@@ -8307,6 +8365,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/core-components" "^0.13.6"
     "@backstage/core-plugin-api" "^1.7.0"
     "@backstage/integration-react" "^1.1.20"
+    "@backstage/plugin-adr" "^0.6.8"
     "@backstage/plugin-api-docs" "^0.9.12"
     "@backstage/plugin-catalog" "^1.14.0"
     "@backstage/plugin-catalog-common" "^1.0.17"
@@ -12255,6 +12314,13 @@ fromentries@^1.3.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/fromentries/-/fromentries-1.3.2.tgz#e4bca6808816bf8f93b52750f1127f5a6fd86e3a"
   integrity sha512-cHEpEQHUg0f8XdtZCc2ZAhrHzKzT0MrFUTcvx+hfxYu7rGMDc5SKoXFh+n4YigxsHXRzc6OrCshdR1bWH6HHyg==
+
+front-matter@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/front-matter/-/front-matter-4.0.2.tgz#b14e54dc745cfd7293484f3210d15ea4edd7f4d5"
+  integrity sha512-I8ZuJ/qG92NWX8i5x1Y8qyj3vizhXS31OxjKDu3LKP+7/qBgfIKValiZIEwoVoJKUHlhWtYrktkxV1XsX+pPlg==
+  dependencies:
+    js-yaml "^3.13.1"
 
 fs-constants@^1.0.0:
   version "1.0.0"
@@ -16554,7 +16620,7 @@ node-fetch@2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.12, node-fetch@^2.6.7, node-fetch@^2.6.9:
+node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.12, node-fetch@^2.6.5, node-fetch@^2.6.7, node-fetch@^2.6.9:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
