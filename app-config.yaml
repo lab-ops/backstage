@@ -133,3 +133,14 @@ events:
   modules:
     github:
       webhookSecret: ${GITHUB_CLIENT_WEBHOOK_SECRET}
+
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - name: local-cluster
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
