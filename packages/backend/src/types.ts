@@ -10,7 +10,7 @@ import {
 import { PluginTaskScheduler } from '@backstage/backend-tasks';
 import { PermissionEvaluator } from '@backstage/plugin-permission-common';
 import { IdentityApi } from '@backstage/plugin-auth-node';
-import {EventBroker} from "@backstage/plugin-events-node";
+import { EventBroker } from '@backstage/plugin-events-node';
 
 export type PluginEnvironment = {
   logger: Logger;

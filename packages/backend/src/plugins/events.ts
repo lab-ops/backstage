@@ -4,13 +4,15 @@ import {
 } from '@backstage/plugin-events-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
-import { createGithubSignatureValidator, GithubEventRouter } from '@backstage/plugin-events-backend-module-github';
+import {
+  createGithubSignatureValidator,
+  GithubEventRouter,
+} from '@backstage/plugin-events-backend-module-github';
 
 export default async function createPlugin(
   env: PluginEnvironment,
 ): Promise<Router> {
   const eventsRouter = Router();
-
 
   const http = HttpPostIngressEventPublisher.fromConfig({
     config: env.config,

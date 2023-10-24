@@ -47,7 +47,6 @@ integrations:
           webhookSecret: ${GITHUB_CLIENT_WEBHOOK_SECRET}
           privateKey: ${GITHUB_CLIENT_PRIVATE_KEY}
 
-
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
   ### A typical reason to do this is to handle HTTPS and CORS for internal services.
@@ -78,7 +77,6 @@ auth:
 #      production:
 #        clientId: ${GITHUB_CLIENT_ID}
 #        clientSecret: ${GITHUB_CLIENT_SECRET}
-
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -123,7 +121,7 @@ catalog:
 #    - type: url
 #      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
 
-    ## Uncomment these lines to add an example org
+## Uncomment these lines to add an example org
 #    - type: url
 #      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
 #      rules:
@@ -133,7 +131,6 @@ events:
   modules:
     github:
       webhookSecret: ${GITHUB_CLIENT_WEBHOOK_SECRET}
-
 
 kubernetes:
   serviceLocatorMethod:
