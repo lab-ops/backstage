@@ -1,6 +1,6 @@
 # [Backstage](https://backstage.io)
 
-Version: 1.0.0 <!-- x-release-please-version -->
+Version: 1.1.0 <!-- x-release-please-version -->
 
 This is your newly scaffolded Backstage App, Good Luck!
 
