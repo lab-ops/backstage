@@ -34,6 +34,7 @@ import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
 import { DefaultEventBroker } from '@backstage/plugin-events-backend';
 import adr from './plugins/adr';
 import kubernetes from './plugins/kubernetes';
+import healthcheck from './plugins/healthcheck';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -85,6 +86,7 @@ async function main() {
   });
   const createEnv = makeCreateEnv(config);
 
+  const healthcheckEnv = useHotMemoize(module, () => createEnv('healthcheck'));
   const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));
   const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));
   const authEnv = useHotMemoize(module, () => createEnv('auth'));
@@ -109,6 +111,7 @@ async function main() {
 
   const service = createServiceBuilder(module)
     .loadConfig(config)
+    .addRouter('', await healthcheck(healthcheckEnv))
     .addRouter('/api', apiRouter)
     .addRouter('', await app(appEnv));
 

@@ -9,14 +9,38 @@ import { DefaultCatalogCollatorFactory } from '@backstage/plugin-search-backend-
 import { DefaultTechDocsCollatorFactory } from '@backstage/plugin-search-backend-module-techdocs';
 import { Router } from 'express';
 import { DefaultAdrCollatorFactory } from '@backstage/plugin-adr-backend';
-
+import { ElasticSearchSearchEngine } from '@backstage/plugin-search-backend-module-elasticsearch';
+import { PgSearchEngine } from '@backstage/plugin-search-backend-module-pg';
 export default async function createPlugin(
   env: PluginEnvironment,
 ): Promise<Router> {
-  // Initialize a connection to a search engine.
-  const searchEngine = new LunrSearchEngine({
-    logger: env.logger,
-  });
+  let searchEngine = null;
+
+  switch (process.env.SEARCH_ENGINE) {
+    case 'lunr':
+      searchEngine = new LunrSearchEngine({
+        logger: env.logger,
+      });
+      break;
+    case 'elastic':
+      searchEngine = await ElasticSearchSearchEngine.fromConfig({
+        logger: env.logger,
+        config: env.config,
+      });
+      break;
+    case 'database':
+      searchEngine = await PgSearchEngine.fromConfig(
+        env.config,
+        { database: env.database }
+      );
+      break;
+    default:
+      searchEngine = new LunrSearchEngine({
+        logger: env.logger,
+      });
+      break;
+  }
+
   const indexBuilder = new IndexBuilder({
     logger: env.logger,
     searchEngine,

@@ -12,7 +12,7 @@ backend:
   auth:
     keys:
       - secret: ${BACKSTAGE_BACKEND_SECRET}
-  baseUrl: ${BACKSTAGE_BACKEND_BASE_URL}
+  baseUrl: ${BACKSTAGE_BASE_URL}
   listen:
     port: 7007
     # Uncomment the following host directive to bind to specific interfaces
@@ -22,7 +22,7 @@ backend:
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: http://localhost:3000
+    origin: ${BACKSTAGE_BASE_URL}
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
@@ -67,16 +67,16 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
-  environment: development
+  environment: ${ENVIRONMENT}
   # see https://backstage.io/docs/auth/ to learn about auth providers
   providers:
     github:
       development:
         clientId: ${GITHUB_CLIENT_ID}
         clientSecret: ${GITHUB_CLIENT_SECRET}
-#      production:
-#        clientId: ${GITHUB_CLIENT_ID}
-#        clientSecret: ${GITHUB_CLIENT_SECRET}
+      production:
+        clientId: ${GITHUB_CLIENT_ID}
+        clientSecret: ${GITHUB_CLIENT_SECRET}
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
